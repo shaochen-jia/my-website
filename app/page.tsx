@@ -25,7 +25,7 @@ const SKILLS = [
 
 const PROJECTS = [
   {
-    title: "Order Reporting Automation", type: "Case Study", org: "Instron · ITW Company",
+    title: "Order Reporting Automation", type: "Case Study", org: "Global Fortune 500 Enterprise",
     tags: ["Power Automate", "Dataverse", "Office Script"],
     stats: [{ n: "93%", l: "Time saved" }, { n: "500k+", l: "Records" }, { n: "30s", l: "Per report" }],
     desc: "Automated enterprise order reporting across four related Dataverse tables — encoding complex PK/FK resolution and business logic to remove manual data lookup entirely.",
@@ -255,22 +255,23 @@ export default function Home() {
             </p>
             {/* Row 1: two degrees */}
             <div className="fact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 32px" }}>
+              </div>
+              <div style={{ padding: "14px 0", borderTop: "1px solid #EBEBEB" }}>
+                <p style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: "6px", color: "var(--ink-faint)" }}>Education</p>
+                <p style={{ fontSize: "13px", color: "var(--ink-mid)", lineHeight: 1.55 }}>
+                  Master of Cyber Security<br />
+                  <span style={{ color: "var(--ink-soft)" }}>In Progress</span>
+                </p>
+                <p style={{ fontSize: "11px", color: "var(--ink-faint)", marginTop: "4px" }}>Monash University · Mar 2026 – Nov 2027</p>
+              </div>
               <div style={{ padding: "14px 0", borderTop: "1px solid #EBEBEB" }}>
                 <p style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: "6px", color: "var(--ink-faint)" }}>Education</p>
                 <p style={{ fontSize: "13px", color: "var(--ink-mid)", lineHeight: 1.55 }}>
                   Bachelor of Information Technology<br />
                   <span style={{ color: "var(--ink-soft)" }}>Business Information Systems</span>
                 </p>
-                <p style={{ fontSize: "11px", color: "var(--ink-faint)", marginTop: "4px" }}>Monash University · WAM: Distinction</p>
-              </div>
-              <div style={{ padding: "14px 0", borderTop: "1px solid #EBEBEB" }}>
-                <p style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: "6px", color: "var(--ink-faint)" }}>Education</p>
-                <p style={{ fontSize: "13px", color: "var(--ink-mid)", lineHeight: 1.55 }}>
-                  Master of Cyber Security<br />
-                  <span style={{ color: "var(--ink-soft)" }}>No major · In Progress</span>
-                </p>
-                <p style={{ fontSize: "11px", color: "var(--ink-faint)", marginTop: "4px" }}>Monash University · Mar 2026 – Nov 2027</p>
-              </div>
+                <p style={{ fontSize: "11px", color: "var(--ink-faint)", marginTop: "4px" }}>Monash University · Feb 2023 – Nov 2025 · WAM: Distinction</p>
+              
             </div>
             {/* Row 2: location */}
             <div style={{ padding: "14px 0", borderTop: "1px solid #EBEBEB" }}>
@@ -377,7 +378,7 @@ export default function Home() {
       {/* ── FOOTER ── */}
       <footer style={{ padding: "28px 80px", borderTop: "1px solid #EBEBEB", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <p className="font-serif" style={{ fontSize: "18px" }}>Shaochen Jia</p>
-        <p style={{ fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--ink-faint)" }}>© {new Date().getFullYear()} · Melbourne, Australia</p>
+        <p style={{ fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--ink-faint)" }}>© {new Date().getFullYear()} · All Rights Reserved</p>
       </footer>
     </main>
   );

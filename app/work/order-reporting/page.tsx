@@ -193,7 +193,7 @@ export default function CaseStudy() {
             ← Back
           </Link>
           <p style={{ fontSize: "11px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#AAAAAA" }}>Case Study</p>
-          <p style={{ fontSize: "11px", letterSpacing: "0.12em", color: "#AAAAAA" }}>Instron · 2025–2026</p>
+          <p style={{ fontSize: "11px", letterSpacing: "0.12em", color: "#AAAAAA" }}>Global Enterprise · 2025–2026</p>
         </header>
 
         {/* ─────────────────────────────────────────────────────────────────────
@@ -208,12 +208,24 @@ export default function CaseStudy() {
           </div>
 
           <div style={{ position: "relative", zIndex: 1 }}>
+            {/* NDA disclaimer */}
+            <motion.div
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+              transition={{ delay: 0.1, duration: 0.8 }}
+              style={{ marginBottom: "28px", maxWidth: "680px", padding: "11px 16px", borderRadius: "8px", border: "1px solid rgba(255,255,255,0.09)", background: "rgba(255,255,255,0.04)" }}
+            >
+              <p style={{ fontSize: "10px", lineHeight: 1.7, color: "rgba(255,255,255,0.28)", fontStyle: "italic" }}>
+                <span style={{ fontStyle: "normal", color: "rgba(255,255,255,0.4)", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase", fontSize: "9px" }}>NDA Notice</span>
+                {" "}— To comply with non-disclosure obligations and protect proprietary intellectual property, all corporate entities, internal ERP architectural schemas, and system identifiers have been generalised and anonymised. The logical methodologies, solution architectures, and performance outcomes remain fully representative of the actual engagement.
+              </p>
+            </motion.div>
+
             <motion.p
               initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.7 }}
               style={{ fontSize: "11px", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: "32px" }}
             >
-              Business Analyst Intern &nbsp;·&nbsp; Instron (ITW) &nbsp;·&nbsp; Dec 2025 – Feb 2026
+              Business Analyst Intern &nbsp;·&nbsp; Global Fortune 500 Enterprise &nbsp;·&nbsp; Dec 2025 – Feb 2026
             </motion.p>
 
             <motion.h1
@@ -282,7 +294,7 @@ export default function CaseStudy() {
                 <p style={{ fontSize: "10px", letterSpacing: "0.2em", textTransform: "uppercase", color: "#AAAAAA", marginBottom: "24px" }}>Root causes identified</p>
                 {[
                   { title: "Fragmented data", desc: "Related records spread across 4 Dataverse tables — no unified view." },
-                  { title: "Manual FK resolution", desc: "Users had to mentally trace PK/FK links between Compass, 5X0, 580, and 280 tables." },
+                  { title: "Manual FK resolution", desc: "Users had to mentally trace PK/FK links between the master sales table and three transactional sub-tables." },
                   { title: "Undocumented logic", desc: "Business rules (coalesce fallbacks, field mappings, country codes) lived only in experienced staff." },
                   { title: "Repetitive Excel work", desc: "Final report assembly done manually in Excel every single time." },
                 ].map((r, i) => (
@@ -395,10 +407,10 @@ export default function CaseStudy() {
           <div style={{ display: "grid", gridTemplateColumns: "5fr 7fr", gap: "60px", alignItems: "start" }}>
             <Reveal>
               <p style={{ fontSize: "16px", lineHeight: 1.8, color: "#2A2A2A", marginBottom: "20px" }}>
-                Behind a single order number sat records spread across four Dataverse tables — Compass (master) plus 5X0, 580, and 280 sub-tables — connected by PK/FK relationships with multi-table coalesce fallback logic.
+                Behind a single order number sat records spread across four Dataverse tables — an Enterprise Master Sales Table plus three Transactional Sub-tables (Shipping, Localisation, and Billing schemas) — connected by PK/FK relationships with multi-table coalesce fallback logic.
               </p>
               <p style={{ fontSize: "14px", lineHeight: 1.75, color: "#6B6B6B", marginBottom: "20px" }}>
-                The coalesce resolution order: check 580 first → fall back to 280 → fall back to Compass master. This handles cases where certain fields exist only in specific sub-tables.
+                The coalesce resolution order: check the Shipping sub-table first → fall back to the Billing sub-table → fall back to the Master Sales Table. This handles cases where certain fields exist only in specific sub-tables.
               </p>
               <p style={{ fontSize: "14px", lineHeight: 1.75, color: "#6B6B6B" }}>
                 Additional encoding: shipping destination (510→USA, 520→UK, etc.), foreign trade name truncation at &quot; for &quot;, and agency vs end-user name fallback.
@@ -412,10 +424,10 @@ export default function CaseStudy() {
                 <div style={{ padding: "24px", borderRadius: "16px", border: "1px solid #E4E0DA", background: "#FEF2F2" }}>
                   <p style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", color: "#E11D48", marginBottom: "16px" }}>Manual — before</p>
                   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}>
-                    <div style={{ padding: "10px 20px", borderRadius: "8px", border: "2px solid #E11D48", fontSize: "13px", fontWeight: 500, color: "#E11D48", background: "#fff" }}>Order (Compass)</div>
+                    <div style={{ padding: "10px 20px", borderRadius: "8px", border: "2px solid #E11D48", fontSize: "13px", fontWeight: 500, color: "#E11D48", background: "#fff" }}>Order (Master Sales Table)</div>
                     <p style={{ fontSize: "11px", color: "#AAAAAA" }}>↓ manual navigation for each table ↓</p>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "8px", width: "100%" }}>
-                      {["5X0 Table", "580 Table", "280 Table"].map(t => (
+                      {["Shipping Table", "Billing Table", "Localisation Table"].map(t => (
                         <div key={t} style={{ padding: "8px", borderRadius: "6px", border: "1.5px dashed #E11D48", fontSize: "12px", textAlign: "center", color: "#E11D48", background: "#fff" }}>{t}</div>
                       ))}
                     </div>
@@ -429,11 +441,11 @@ export default function CaseStudy() {
                     <div style={{ padding: "10px 20px", borderRadius: "8px", background: "#0EA5E9", fontSize: "13px", fontWeight: 500, color: "#fff" }}>Order Number (input)</div>
                     <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
                       <div style={{ height: "1px", flex: 1, background: "#0EA5E9", opacity: 0.3 }} />
-                      <p style={{ fontSize: "11px", color: "#0EA5E9", whiteSpace: "nowrap" }}>coalesce: 580 → 280 → Compass</p>
+                      <p style={{ fontSize: "11px", color: "#0EA5E9", whiteSpace: "nowrap" }}>coalesce: Shipping → Billing → Master fallback</p>
                       <div style={{ height: "1px", flex: 1, background: "#0EA5E9", opacity: 0.3 }} />
                     </div>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "8px", width: "100%" }}>
-                      {["5X0 Table", "580 Table", "280 Table"].map(t => (
+                      {["Shipping Table", "Billing Table", "Localisation Table"].map(t => (
                         <div key={t} style={{ padding: "8px", borderRadius: "6px", border: "2px solid #0EA5E9", fontSize: "12px", textAlign: "center", color: "#0EA5E9", background: "#fff" }}>{t}</div>
                       ))}
                     </div>
