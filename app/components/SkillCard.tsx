@@ -109,6 +109,7 @@ export function SkillCard({ idx, num, category, tools }: SkillCardProps) {
       transform: translateY(16px);
       transition: opacity 280ms ease, transform 320ms cubic-bezier(0.16,1,0.3,1);
       pointer-events: none;
+      overflow-y: auto;
     }
     .${s}-back-label {
       font-size: 10px;

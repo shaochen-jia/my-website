@@ -84,6 +84,55 @@ export default function Home() {
 
   return (
     <main style={{ position: "relative", zIndex: 10 }}>
+      <style>{`
+        /* ── section padding ── */
+        .section-pad { padding: 112px 80px; }
+
+        /* ── grids ── */
+        .skills-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+        .projects-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        /* ── tablet ── */
+        @media (max-width: 960px) {
+          .skills-grid { grid-template-columns: repeat(2, 1fr); }
+          .projects-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        /* ── mobile ── */
+        @media (max-width: 640px) {
+          .section-pad { padding: 72px 20px; }
+          .skills-grid { grid-template-columns: 1fr; }
+          .projects-grid { grid-template-columns: 1fr; }
+          .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .fact-grid  { grid-template-columns: 1fr !important; }
+        }
+
+        /* ── skill cards: always show tools on touch/mobile ── */
+        @media (hover: none), (max-width: 640px) {
+          .skc0-front, .skc1-front, .skc2-front { display: none !important; }
+          .skc0-back,  .skc1-back,  .skc2-back  {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            pointer-events: auto !important;
+          }
+          .skc0-card, .skc1-card, .skc2-card {
+            background: #0a0a0a !important;
+            border-color: #1a1a1a !important;
+          }
+        }
+      `}</style>
 
       {/* ── NAV ── */}
       <nav style={{
@@ -178,9 +227,9 @@ export default function Home() {
       </div>
 
       {/* ── ABOUT ── */}
-      <section id="about" style={{ padding: "120px 80px" }}>
+      <section id="about" className="section-pad">
         <SectionLabel>About</SectionLabel>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", maxWidth: "1200px", margin: "0 auto", alignItems: "start" }}>
+        <div className="about-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", maxWidth: "1200px", margin: "0 auto", alignItems: "start" }}>
 
           {/* Left: name + map */}
           <div>
@@ -204,27 +253,38 @@ export default function Home() {
               I&apos;ve worked across enterprise ERP rollouts, product teams, and architecture firms — always as the person connecting what the business wants with what can actually be built.
               Currently completing a Master of IT (Cyber Security) at Monash while looking for my next BA role.
             </p>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 32px" }}>
-              {[
-                { l: "Degree",   v: "Monash University — Bachelor of Information Technology (Business Information Systems)" },
-                { l: "WAM",      v: "Distinction" },
-                { l: "Location", v: "Melbourne, Australia" },
-                { l: "Cert",     v: "Google Project Management" },
-              ].map(f => (
-                <div key={f.l} style={{ padding: "14px 0", borderTop: "1px solid #EBEBEB" }}>
-                  <p style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: "4px", color: "var(--ink-faint)" }}>{f.l}</p>
-                  <p style={{ fontSize: "13px", color: "var(--ink-mid)" }}>{f.v}</p>
-                </div>
-              ))}
+            {/* Row 1: two degrees */}
+            <div className="fact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0 32px" }}>
+              <div style={{ padding: "14px 0", borderTop: "1px solid #EBEBEB" }}>
+                <p style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: "6px", color: "var(--ink-faint)" }}>Education</p>
+                <p style={{ fontSize: "13px", color: "var(--ink-mid)", lineHeight: 1.55 }}>
+                  Bachelor of Information Technology<br />
+                  <span style={{ color: "var(--ink-soft)" }}>Business Information Systems</span>
+                </p>
+                <p style={{ fontSize: "11px", color: "var(--ink-faint)", marginTop: "4px" }}>Monash University · WAM: Distinction</p>
+              </div>
+              <div style={{ padding: "14px 0", borderTop: "1px solid #EBEBEB" }}>
+                <p style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: "6px", color: "var(--ink-faint)" }}>Education</p>
+                <p style={{ fontSize: "13px", color: "var(--ink-mid)", lineHeight: 1.55 }}>
+                  Master of Cyber Security<br />
+                  <span style={{ color: "var(--ink-soft)" }}>No major · In Progress</span>
+                </p>
+                <p style={{ fontSize: "11px", color: "var(--ink-faint)", marginTop: "4px" }}>Monash University · Mar 2026 – Nov 2027</p>
+              </div>
+            </div>
+            {/* Row 2: location */}
+            <div style={{ padding: "14px 0", borderTop: "1px solid #EBEBEB" }}>
+              <p style={{ fontSize: "10px", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: "4px", color: "var(--ink-faint)" }}>Location</p>
+              <p style={{ fontSize: "13px", color: "var(--ink-mid)" }}>Melbourne, Australia</p>
             </div>
           </Reveal>
         </div>
       </section>
 
       {/* ── SKILLS ── */}
-      <section id="skills" style={{ padding: "112px 80px", background: "var(--bone-dark)" }}>
+      <section id="skills" className="section-pad" style={{ background: "var(--bone-dark)" }}>
         <SectionLabel>Skills</SectionLabel>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px", maxWidth: "1200px", margin: "0 auto" }}>
+        <div className="skills-grid">
           {SKILLS.map((s, i) => (
             <Reveal key={i} delay={i * 0.12}>
               <SkillCard idx={i} num={s.num} category={s.category} tools={s.tools} />
@@ -234,9 +294,9 @@ export default function Home() {
       </section>
 
       {/* ── PROJECTS ── */}
-      <section id="projects" style={{ padding: "112px 80px" }}>
+      <section id="projects" className="section-pad">
         <SectionLabel>Projects</SectionLabel>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "24px", maxWidth: "1200px", margin: "0 auto" }}>
+        <div className="projects-grid">
           {PROJECTS.map((p, i) => {
             const inner = (
               <div style={{
@@ -283,7 +343,7 @@ export default function Home() {
       </section>
 
       {/* ── CONTACT ── */}
-      <section id="contact" style={{ padding: "144px 24px", display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", background: "var(--bone-dark)" }}>
+      <section id="contact" className="section-pad" style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", background: "var(--bone-dark)" }}>
         <Reveal><p style={{ fontSize: "11px", letterSpacing: "0.28em", textTransform: "uppercase", color: "var(--ink-faint)", marginBottom: "32px" }}>Contact</p></Reveal>
         <Reveal delay={0.1}>
           <h2 className="font-serif" style={{ fontSize: "clamp(40px,7vw,96px)", lineHeight: 0.92, letterSpacing: "-0.03em", marginBottom: "40px" }}>Let&apos;s talk.</h2>
